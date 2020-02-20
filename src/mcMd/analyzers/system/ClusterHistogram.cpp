@@ -167,7 +167,7 @@ namespace McMd
          for (int i = 0; i < identifier_.nCluster(); i++) {
              thisCluster = identifier_.cluster(i);
              thisClusterStart = thisCluster.head();
-             outputFile_ << i << "	" ;
+             outputFile_ << i<<"  ("<<identifier_.cluster(i).size()<<")  "<< "       " ;
              //List out every molecule in that cluster
              while (thisClusterStart) {
                 next = thisClusterStart->next();
@@ -194,7 +194,7 @@ namespace McMd
          Molecule::ConstAtomIterator atomIter;
          for (int i = 0; i < identifier_.nCluster(); i++) {
              thisCluster = identifier_.cluster(i);
-             outputFile_ << i << "	" ;
+             outputFile_ << i<<"  ("<<identifier_.cluster(i).size()<<")  "<< "       " ;
              //For that cluster, calculate the center of mass
              clusterCOM = thisCluster.clusterCOM(atomTypeId_, system().boundary());
              outputFile_ << clusterCOM;
@@ -207,8 +207,7 @@ namespace McMd
          outputFile_.close();
          fileMaster().openOutputFile(outputFileName(".momentTensors"+toString(iStep)),outputFile_);
          for (int i = 0; i < identifier_.nCluster(); i++) {
-             outputFile_ << i << "	" << allMoments[i] << "\n";
-           
+             outputFile_ << i<<"  ("<<identifier_.cluster(i).size()<<")  "<< "       "<< allMoments[i] << "\n";
          }
          outputFile_.close();
       }
