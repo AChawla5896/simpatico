@@ -117,6 +117,9 @@ namespace DdMd
    {
       // Compute number of atoms in desired frames
       //atomStorage().computeNAtomTotal(domain().communicator());
+      if (iStep == 0){
+         selectAtomSetup();
+      }
       int id;
       int typeId;
       if (domain().isMaster()) {

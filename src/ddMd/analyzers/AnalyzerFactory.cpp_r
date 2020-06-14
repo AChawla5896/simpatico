@@ -14,6 +14,7 @@
 #include "trajectory/DdMdTrajectoryWriter.h"
 #include "trajectory/DdMdGroupTrajectoryWriter.h"
 #include "trajectory/LammpsDumpWriter.h"
+#include "trajectory/LammpsDumpSelectWriter.h"
 
 // Energy analyzers 
 #include "energy/LogEnergy.h"
@@ -136,7 +137,11 @@ namespace DdMd
       } else
       if (className == "LammpsDumpWriter") {
          ptr = new LammpsDumpWriter(simulation());
+      } else
+      if (className == "LammpsDumpSelectWriter") {
+         ptr = new LammpsDumpSelectWriter(simulation());
       } 
+
       // Miscellaneous
       #ifdef SIMP_BOND
       else if (className == "BondTensorAutoCorr") {
